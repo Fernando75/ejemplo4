@@ -16,12 +16,12 @@ $app = new Silex\Application();
 $app->get('/clima', function() use($app) {
 	
 	$client = new Client();
-	$url = "http://api.openweathermap.org/data/2.5/weather?id=3530597&ppid=162158834d5f09a730c859a1a94e98ac&units=metric";
+	$url = "http://api.openweathermap.org/data/2.5/weather?id=3530597&appid=162158834d5f09a730c859a1a94e98ac&units=metric";
 	$response= $client->get($url);
 	$body = $response->getBody();
 
 
-	return $body;
+	return new Response($body,200,array('Content-Type' => 'application/json'));
 	
 });
 
